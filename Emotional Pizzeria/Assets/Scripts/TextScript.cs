@@ -6,11 +6,16 @@ using TMPro;
 using System.Collections.Generic;
 
 
+/// <summary>
+/// Used to control text generation. 
+/// author - @Shanaia / modified by - @Jiwon / last modified - October 1st, 2023
+/// </summary>
 public class TextScript : MonoBehaviour
 {
     [SerializeField] private TMP_Text tmp;
     [SerializeField] private Coroutine coroutine;
 
+    [Header("Typewriter Speed")]
     [SerializeField] float delayBeforeStart = 0f;
     [SerializeField] float timeBtwChars = 0.1f;
 
@@ -18,18 +23,23 @@ public class TextScript : MonoBehaviour
     [SerializeField] private GameObject customer; 
     [SerializeField] private GameObject takeOrder; 
     [SerializeField] private GameObject scManager;
+    
+    [Header("Typewriter Status")]
     private ScenarioScript sc;  
-
+    // is typewriter fast forwarded?
     private bool textSkipped = false; 
+    // typewriter effect finished?
     public bool textFinished = false; 
-    private static bool updateOn = true; 
+    // private static bool updateOn = true; 
     private string txt; 
+    // is typewriter on?
     private bool running = false; 
 
 
-    void Start() {
+    void Start() 
+    {
 
-        //sc = scManager.GetComponent<ScenarioScript>();
+        // No typewriter effect for summary prompts 
         if (gameObject.name == "ScenarioSummary")
         {
             Initialize();
@@ -37,25 +47,37 @@ public class TextScript : MonoBehaviour
 
     }
 
-    private void Update() {
+    private void Update() 
+    {
+     
+        if (Time.timeScale == 0f) 
+        {
+            return;
+        }
 
+        // No typewriter effect for summary prompts 
         if (gameObject.name == "ScenarioSummary")
         {
             return;
         }
 
+        // Typewriter effect implement 
+
+        // Typewriter starting condition 
         if (ScenarioScript.text != null && !running)
         {
             running = true;
             InitializeByString(ScenarioScript.text);
         }
 
+        // Typewriter fast forwarding condition (Okay button appear)
         if (textFinished || (textFinished && Input.GetMouseButtonDown(0)))
         {
             takeOrder.SetActive(true);
         }
 
-        if (!textSkipped && Input.GetMouseButtonDown(0))
+        // Typewriter fast forwarding action
+        if (!textSkipped && Input.GetMouseButtonDown(0) && Time.timeScale != 0f)
         {
             textSkipped = true;
             textFinished = true;
@@ -63,57 +85,41 @@ public class TextScript : MonoBehaviour
 
     }
 
-
-
-    public void Initialize() {
-
-        
+    // No typewriter effect for summary prompts
+    public void Initialize() 
+    {   
         ScenarioScript sc = scManager.GetComponent<ScenarioScript>();
-        //StreamReader reader = new StreamReader(ScenarioScript.text);
-        //tmp.text = reader.ReadToEnd();
         tmp.text = ScenarioScript.text; 
-        //Debug.Log("here");
-        
-        //Debug.Log(sc.curDir);
-        //Debug.Log(sc.text);
-        //tmp.text = situation;
-        //tmp.text = sc.text; 
-        //TypeWriterTMP(situation);
     }
 
-    public void Initialize(string path) {
-
-        //Debug.Log("this is triggered");
-        
-        //Debug.Log(path);
+    // Typewriter effect for speech bubble 
+    public void Initialize(string path) 
+    {
         StreamReader reader = new StreamReader(path);
 
-        //tmp.text = situation;
         tmp.text = "";
         txt = reader.ReadToEnd();
         StartCoroutine("TypeWriterTMP");
-        //TypeWriterTMP(situation);
     }
 
+    // Typewriter effect for speech bubble 
     public void InitializeByString(string scenario)
     {
-
-        //Debug.Log("this is triggered");
-
-        //Debug.Log(path);
-        //tmp.text = situation;
-        Debug.Log("tmp.text initialise " + tmp.text);
         tmp.text = "";
         txt = scenario;
-        Debug.Log("txt " + txt);
         StartCoroutine("TypeWriterTMP");       
-        //TypeWriterTMP(situation);
     }
 
+    // Typewriter effect implementation 
+    // Taken and adapted from : 
+    // https://unitycoder.com/blog/2015/12/03/ui-text-typewriter-effect-script/
+    // on September 15th, 2023.
     IEnumerator TypeWriterTMP()
     {
         yield return new WaitForSecondsRealtime(delayBeforeStart);
+        yield return new WaitUntil(() => Time.timeScale != 0f);
 
+        // print each character 
         foreach (char c in txt)
         {
             if (textSkipped) {
@@ -127,61 +133,4 @@ public class TextScript : MonoBehaviour
 
         textFinished = true; 
     }
-
-
 }
-
-
-//public class TextScript : MonoBehaviour
-//{
-//    [SerializeField] private TMP_Text tmp;
-//    [SerializeField] private Coroutine coroutine;
-
-//    [SerializeField] float delayBeforeStart = 0f;
-//    [SerializeField] float timeBtwChars = 0.1f;
-
-//    private string txt; 
-
-//    /// <summary>
-//    /// This function chooses a random scenario from the folder "situation" in the given path
-//    /// </summary>
-//    /// <param name="path"></param>
-//    public void SetTextByPath(string path) {
-//        Debug.Log(path);
-
-//        string[] files = Directory.GetFiles(Path.Combine(path, "situation"));
-//        string[] filtered = Array.FindAll(files, files => 
-//                                            !files.EndsWith("meta"));
-
-//        string sit_chosen = filtered[UnityEngine.Random.Range(0, filtered.Length)];
-//        StreamReader reader = new StreamReader(sit_chosen);
-//        string situation = reader.ReadToEnd();
-
-//        //tmp.text = situation;
-//        tmp.text = "";
-//        txt = situation;
-//        StartCoroutine("TypeWriterTMP");
-//        //TypeWriterTMP(situation);
-//    }
-
-//    /// <summary>
-//    /// This function sets the text to the given string
-//    /// </summary>
-//    /// <param name="text"></param>
-//    public void SetTextByString(string text) {
-//        tmp.text = "";
-//        txt = text;
-//        StartCoroutine("TypeWriterTMP");
-//    }
-
-//    IEnumerator TypeWriterTMP()
-//    {
-//        yield return new WaitForSeconds(delayBeforeStart);
-
-//        foreach (char c in txt)
-//        {
-//            tmp.text += c;
-//            yield return new WaitForSeconds(timeBtwChars);
-//        }
-//    }
-//}

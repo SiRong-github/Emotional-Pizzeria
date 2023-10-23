@@ -5,26 +5,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-/**
- * 
- */
+/// <summary>
+/// Pause button implementation - should stop music, levels
+/// author - @Shanaia / last modified - September 8th, 2023
+/// </summary>
 public class PauseMenuHandler : MonoBehaviour
-
 {
     public static bool gamePaused = false;
     [SerializeField] GameObject level;
-    // Start is called before the first frame update
+
     void Start()
     {
         this.gameObject.GetComponent<Button>().onClick.AddListener(Handle);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    // Changes the state of the game (pause / resume)
     void Handle()
     {
         if (gamePaused)
@@ -39,25 +34,23 @@ public class PauseMenuHandler : MonoBehaviour
         }
     } 
 
-    void PauseGame()
+    private void PauseGame()
     {
-        Debug.Log("hey!");
         Time.timeScale = 0f;
-
+        AudioListener.pause = true; 
     }
 
-    void ResumeGame()
+    private void ResumeGame()
     {
-        Debug.Log("p");
         Time.timeScale = 1f;
+        AudioListener.pause = false;
     }
 
-    /* Loading Other Scenes */
+    // Loading Other Scenes 
     public void ReturnToMenu()
     {
         level.GetComponent<Spawner>().RemoveCurrCustomer();
         SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
-        Debug.Log("Main menu");
     }
 
 }

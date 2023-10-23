@@ -1,5 +1,11 @@
 using UnityEngine;
 
+/// <summary>
+/// Used in Emotion Prompt GameObject.
+/// Coordinates the incorrect / correct prompt choices for each of the buttons.
+/// Use in coordination with Answers.cs - script for Emotion buttons.
+/// author - @Jiwon / last modified - October 12th, 2023
+/// </summary>
 public class EmotionScript : MonoBehaviour
 {
     [SerializeField] private GameObject scManager;
@@ -8,55 +14,47 @@ public class EmotionScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        // To implement
-        //string wrong = Path.Combine(ScenarioScript.curDir, "WrongEmotions.txt");
-        //StreamReader reader = new StreamReader(wrong);
-        //wrongEmotions = reader.ReadToEnd().Split("\n");
-
         int correctIndex = chooseCorrect();
-        assignValues(correctIndex);
-        
+        AssignValues(correctIndex);      
     }
 
-    // chooses the index of the correct button at random 
+    // Chooses the index of the correct button at random 
     private int chooseCorrect() 
     {
         int correctBtn = Random.Range(0, emotionBtns.Length - 1);
         return correctBtn;
     }
 
-    // assigns appropriate values to emotion buttons 
-    private void assignValues(int index) 
+    // Assigns appropriate values to emotion buttons 
+    private void AssignValues(int index) 
     {
         // loading the scenario manager 
         ScenarioScript sc = scManager.GetComponent<ScenarioScript>();
         string wrongChosen = "";
+        string wrong; 
 
+        // assign values to each of the buttons
         for (int i = 0; i < emotionBtns.Length; i++) 
         {
             Answers asc = emotionBtns[i].GetComponent<Answers>();
+            // correct button 
             if (i == index) 
             {
                 string correct = sc.chosenEmotion.name;
                 Debug.Log(correct);
-                asc.assignValue(correct, true);
+                asc.AssignValue(correct, true);
             } 
+            // incorrect button 
             else 
             {
                 string[] wrongEmotions = sc.chosenEmotion.incorrect; 
-                string wrong = "hi"; 
+                // to avoid having same incorrect choices 
+
                 while ((wrong = wrongEmotions[Random.Range(0, wrongEmotions.Length - 1)]) == wrongChosen);
                 wrongChosen = wrong; 
-                //Debug.Log(wrongEmotions.Length);
-                asc.assignValue(wrong, false);
+                // assign to emotion buttons (Answers script)
+                asc.AssignValue(wrong, false);
             }
         }        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

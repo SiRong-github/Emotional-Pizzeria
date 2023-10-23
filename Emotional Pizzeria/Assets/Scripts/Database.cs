@@ -7,12 +7,13 @@ using UnityEngine.UI;
 using Mono.Data.Sqlite;
 
 /// <summary>
-/// Author: Bernhard Andersson
-/// This class is used to interact with the database, to send and retrieve data
+/// This class is used to interact with the database, to send and retrieve data\
+/// author - @Bernhard / last modified - September 10th, 2023
 /// </summary>
 public class Database : MonoBehaviour
 {
 
+    // database information 
     private string dbFilePath = "data/wrong/ega.db";
     private string dbName = "URI=file:data/wrong/ega.db";
     private int curNumHearts;
@@ -36,13 +37,11 @@ public class Database : MonoBehaviour
         //showHearts();
     }
 
-    /// <summary>
-    /// Author: Bernhard Andersson
-    /// Returns the current number of hearts the player has
-    /// </summary>
-    /// <returns> The number of hearts stored in the database </returns>
-    public int getCurNumHearts(){
-        if (!databasePresent){
+    // Returns the current number of hearts the player has
+    public int GetCurNumHearts()
+    {
+        if (!databasePresent)
+        {
             Debug.Log("No hearts found as database is missing.");
             return -1;
         }
@@ -68,12 +67,10 @@ public class Database : MonoBehaviour
         return -1;
     }
 
-    /// <summary>
-    /// Author: Bernhard Andersson
-    /// Adds n hearts to the database
-    /// </summary>
-    /// <param name="n"> The number of hearts to add to the database </param>
-    public void addHearts(int n) { 
+    // Adds n hearts to the database
+    // @param n:  The number of hearts to add to the database
+    public void AddHearts(int n) 
+    { 
         if (!databasePresent){
             Debug.Log("No hearts added as database is missing.");
             return;
@@ -95,12 +92,11 @@ public class Database : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Author: Bernhard Andersson
-    /// Shows the current number of hearts
-    /// </summary>
-    public void showHearts() {
-        if (!databasePresent){
+    // Shows the current number of hearts
+    public void ShowHearts() 
+    {
+        if (!databasePresent)
+        {
             Debug.Log("No hearts shown as database is missing.");
             return;
         }
@@ -124,14 +120,12 @@ public class Database : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Author: Bernhard Andersson
-    /// Creates the database if it doesn't exist
-    /// </summary>
+    // Creates the database if it doesn't exist
     public void CreateDB()
     {
         Debug.Log(dbFilePath);
-        if (!File.Exists(dbFilePath)){
+        if (!File.Exists(dbFilePath))
+        {
             if (requiresPopup) databaseCheck.SetActive(true);
             databasePresent = false;
             return;
@@ -151,7 +145,8 @@ public class Database : MonoBehaviour
         }
     }
 
-    public void deactivatePopup(){
+    public void deactivatePopup()
+    {
         databaseCheck.SetActive(false);
     }
 }

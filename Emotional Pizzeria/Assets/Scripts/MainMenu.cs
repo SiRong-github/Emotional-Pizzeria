@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Controls buttons in main menu. 
+/// author - @Shanaia / last modified - September 7th, 2023
+/// </summary>
 public class MainMenu : MonoBehaviour
 {
 
     public void Start()
     {
         string currScene = SceneManager.GetActiveScene().name;
-        if (currScene == "Start Scene")
-        { //Logo w/ music, not main menu
-
-        }
     }
 
     /* Main Menu Options */
@@ -71,14 +71,4 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Summary");
         Debug.Log("The game has ended.");
     }
-
-
-    // public void NextInstructionPage() {
-    //     Page1.SetActive(false);
-    //     Page2.SetActive(true);
-    //     GameObject.Find("NextButton").SetActive(false);
-    //     GameObject.Find("ReturnButton").SetActive(false);
-    // }
-
-
 }
