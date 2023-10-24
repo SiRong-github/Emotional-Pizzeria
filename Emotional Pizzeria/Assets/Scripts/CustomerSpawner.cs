@@ -42,10 +42,9 @@ public class Spawner : MonoBehaviour
         // Renders Customer after some time 
         yield return new WaitForSecondsRealtime(timer);
         customerIn.Play();
-        yield return new WaitUntil(() => Time.timeScale != 0f);
-        yield return new WaitUntil(() => customerIn.isPlaying == false);
-        yield return new WaitUntil(() => Time.timeScale != 0f);
         
+        yield return new WaitUntil(() => customerIn.isPlaying == false && Time.timeScale != 0f);
+         
         body.GetComponent<CharacterScript>().Render();
         
         // Renders Speech Bubble after some time
