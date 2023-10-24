@@ -18,16 +18,21 @@ public class KeepBGMusicPlaying : MonoBehaviour
     void Start()
     {
         GameObject[] obj = GameObject.FindGameObjectsWithTag("bgm");
-        // At any given moment, we should have only one background music track playing-- if there's already
-        // BGM audio playing then we should delete this audio track. 
-        if (obj.Length > 1)
+        for (int i = 0; i < obj.Length; i++) 
+        {
+            obj[i].GetComponent<AudioSource>().ignoreListenerPause = true; 
+        }
+
+        if (obj.Length > 1) 
         {
             Destroy(this.gameObject);
-        }
-        else
+        } else 
         {
             // Keep the gameobject for audio persisting between scenes 
             DontDestroyOnLoad(this.gameObject);
         }
+
+        // At any given moment, we should have only one background music track playing-- if there's already
+        // BGM audio playing then we should delete this audio track.         
     }
 }

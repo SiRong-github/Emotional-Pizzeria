@@ -19,6 +19,12 @@ public class PauseMenuHandler : MonoBehaviour
         this.gameObject.GetComponent<Button>().onClick.AddListener(Handle);
     }
 
+    void Awake()
+    {
+        gamePaused = false; 
+        ResumeGame();
+    }
+
     // Changes the state of the game (pause / resume)
     void Handle()
     {
@@ -46,7 +52,6 @@ public class PauseMenuHandler : MonoBehaviour
         AudioListener.pause = false;
     }
 
-    // Loading Other Scenes 
     public void ReturnToMenu()
     {
         level.GetComponent<Spawner>().RemoveCurrCustomer();
