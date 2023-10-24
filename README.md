@@ -34,7 +34,7 @@ This will result in a .ipa file. These steps assume you don’t have a 'Build' f
 
 1. Download Unity at Download, making sure to install the latest editor version
 
-2. Clone the project at https://github.com/baejb1229059/-TODO-Create-team-name.git - Connect your Github account 
+2. Clone the project at https://github.com/SiRong-github/-TODO-Create-team-name
 
 3. Through Unity, open the project by opening the Emotional Pizzeria file
 
@@ -58,7 +58,7 @@ This will result in a .exe file. These steps assume you don’t have a 'Build' f
 
 1. Download Unity at Download, making sure to install the latest editor version
 
-2. Clone the project at https://github.com/baejb1229059/-TODO-Create-team-name.git - Connect your Github account 
+2. Clone the project at https://github.com/SiRong-github/-TODO-Create-team-name
 
 3. Through Unity, open the project by opening the Emotional Pizzeria file
 
