@@ -10,18 +10,23 @@ This project was done by a group of 5 students for COMP30022 IT Project.
 
 **Unique Selling Points (USPs)**: Restaurant concept, emotional granularity, levels of increasing difficulty.
 
-## [Confluence Documents (PDF forms)]
+## [Documents (PDF forms)]
 
-## Artefacts
+### Presentation (Short Overview of Project)
+https://github.com/SiRong-github/Emotional-Pizzeria/blob/main/Confluence%20Documents/Presentation.pdf
+
+### Confluence
+
+#### Artefacts
 https://github.com/SiRong-github/Emotional-Pizzeria/blob/main/Confluence%20Documents/Artefacts.pdf
 
-## Product Report
+#### Product Report
 https://github.com/SiRong-github/Emotional-Pizzeria/blob/main/Confluence%20Documents/Product%20Report.pdf
 
-## Meeting Notes
+#### Meeting Notes
 https://github.com/SiRong-github/Emotional-Pizzeria/blob/main/Confluence%20Documents/Meeting%20Notes.pdf
 
-## Sprints
+#### Sprints
 https://github.com/SiRong-github/Emotional-Pizzeria/blob/main/Confluence%20Documents/Sprints.pdf
 
 ## [Demo Video]
