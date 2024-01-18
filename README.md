@@ -35,4 +35,4 @@ https://github.com/SiRong-github/Emotional-Pizzeria/blob/main/Confluence%20Docum
 https://github.com/SiRong-github/Emotional-Pizzeria/assets/62817554/ce8cf453-3756-4226-b16d-e72add210102
 
 ### Long Demo
-https://github.com/SiRong-github/Emotional-Pizzeria/blob/main/DemoVideo.mp4
+https://github.com/SiRong-github/Emotional-Pizzeria/blob/main/Confluence%20Documents/DemoVideo.mp4
