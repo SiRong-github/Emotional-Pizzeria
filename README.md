@@ -1,5 +1,5 @@
 ## [University Subject]
-This project was done by a group of 5 students for COMP30022 IT Project.
+This project was done by a group of 5 students for COMP30022 IT Project of the University of Melbourne.
 
 ## [About Emotional Pizzeria]  
 **Core Concept**: A “papa’s pizzeria” style game which involves the player having to serve customers the right order within a specific time limit. Instead of the traditional game where customers order food, the customers will tell the player about a situation they experienced, and the player will have to decide which emotion is closest to what they must be feeling. If they get it correct, they receive a certain number of hearts.
