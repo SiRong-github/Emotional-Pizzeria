@@ -1,6 +1,9 @@
 ## [University Subject]
 This project was done by a group of 5 students for COMP30022 IT Project of the University of Melbourne.
 
+## [Play]
+https://sirong-github.github.io/Emotional-Pizzeria/
+
 ## [Demo Video]
 
 ### Short Demo
