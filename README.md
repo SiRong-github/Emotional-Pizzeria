@@ -1,5 +1,6 @@
 ## [University Subject]
-This project was done by a group of 5 students for COMP30022 IT Project of the University of Melbourne.
+This project was done by a group of 5 students for COMP30022 IT Project of the University of Melbourne. The agile methodology was utilised in order to ensure that the project meets all the client's requirements.
+
 
 ## [Play]
 https://sirong-github.github.io/Emotional-Pizzeria/
