@@ -1,5 +1,5 @@
 # University Subject
-This project was done by a group of 5 students for COMP30022 IT Project of the University of Melbourne.
+This project was done by a group of 5 students for COMP30022 IT Project of the University of Melbourne. Utilising Agile methodology, we ensured the game evolved according to client feedback and needs. In our latest demo, the client expressed great satisfaction with the game, highlighting its effectiveness in achieving its educational goal of enhancing emotional granularity in autistic children.
 
 # Play
 https://sirong-github.github.io/Emotional-Pizzeria/
